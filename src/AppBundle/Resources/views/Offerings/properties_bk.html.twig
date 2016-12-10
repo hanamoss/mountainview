@@ -1,0 +1,82 @@
+{% set active = 'offerings' %}
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block title %}Properties - Crowd Valley{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('bundles/app/css/nivo-lightbox.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/app/css/nivo-lightbox-theme.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+
+    <div class="mg-page-title parallax">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Gallery - 3 Columns</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mg-gallery-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mg-filter">
+                        <form id="mg-filter">
+                            <fieldset>
+                                <label class="btn btn-dark btn-main"><input type="radio" name="filter" value="all" checked="checked">All</label>
+                                <label class="btn btn-dark"><input type="radio" name="filter" value="classic">classic</label>
+                                <label class="btn btn-dark"><input type="radio" name="filter" value="deluxe">deluxe</label>
+                                <label class="btn btn-dark"><input type="radio" name="filter" value="royal">royal</label>
+                            </fieldset>
+                        </form>
+                    </div>
+
+                    <div class="row" id="mg-grid">
+                        <figure class="col-md-4 mg-gallery-item" data-groups='["classic"]'>
+                            <a href="{{ asset('bundles/app/images/room-1.png') }}" data-lightbox-gallery="rooms"><img src="{{ asset('bundles/app/images/room-1.png') }}" class="img-responsive" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a>
+                        </figure>
+                        <figure class="col-md-4 mg-gallery-item" data-groups='["deluxe"]'>
+                            <a href="{{ asset('bundles/app/images/room-2.png') }}" data-lightbox-gallery="rooms"><img src="{{ asset('bundles/app/images/room-2.png') }}" class="img-responsive" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a>
+                        </figure>
+                        <figure class="col-md-4 mg-gallery-item" data-groups='["royal"]'>
+                            <a href="{{ asset('bundles/app/images/room-3.png') }}" data-lightbox-gallery="rooms"><img src="{{ asset('bundles/app/images/room-3.png') }}" class="img-responsive" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a>
+                        </figure>
+                        <figure class="col-md-4 mg-gallery-item" data-groups='["classic"]'>
+                            <a href="{{ asset('bundles/app/images/room-4.png') }}" data-lightbox-gallery="rooms"><img src="{{ asset('bundles/app/images/room-4.png') }}" class="img-responsive" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a>
+                        </figure>
+                        <figure class="col-md-4 mg-gallery-item" data-groups='["deluxe"]'>
+                            <a href="{{ asset('bundles/app/images/room-5.png') }}" data-lightbox-gallery="rooms"><img src="{{ asset('bundles/app/images/room-5.png') }}" class="img-responsive" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a>
+                        </figure>
+                        <figure class="col-md-4 mg-gallery-item" data-groups='["classic"]'>
+                            <a href="{{ asset('bundles/app/images/room-6.png') }}" data-lightbox-gallery="rooms"><img src="{{ asset('bundles/app/images/room-6.png') }}" class="img-responsive" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a>
+                        </figure>
+                        <figure class="col-md-4 mg-gallery-item" data-groups='["royal"]'>
+                            <a href="{{ asset('bundles/app/images/room-7.png') }}" data-lightbox-gallery="rooms"><img src="{{ asset('bundles/app/images/room-7.png') }}" class="img-responsive" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a>
+                        </figure>
+                        <figure class="col-md-4 mg-gallery-item" data-groups='["royal"]'>
+                            <a href="{{ asset('bundles/app/images/room-8.png') }}" data-lightbox-gallery="rooms"><img src="{{ asset('bundles/app/images/room-8.png') }}" class="img-responsive" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a>
+                        </figure>
+                        <figure class="col-md-4 mg-gallery-item" data-groups='["classic"]'>
+                            <a href="{{ asset('bundles/app/images/room-9.png') }}" data-lightbox-gallery="rooms"><img src="{{ asset('bundles/app/images/room-9.png') }}" class="img-responsive" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a>
+                        </figure>
+                        <figure class="col-md-4 mg-gallery-item" data-groups='["royal"]'>
+                            <a href="{{ asset('bundles/app/images/room-10.png') }}" data-lightbox-gallery="rooms"><img src="{{ asset('bundles/app/images/room-10.png') }}" class="img-responsive" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a>
+                        </figure>
+                        <figure class="col-md-4 mg-gallery-item" data-groups='["deluxe"]'>
+                            <a href="{{ asset('bundles/app/images/room-11.png') }}" data-lightbox-gallery="rooms"><img src="{{ asset('bundles/app/images/room-11.png') }}" class="img-responsive" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a>
+                        </figure>
+                        <figure class="col-md-4 mg-gallery-item" data-groups='["classic"]'>
+                            <a href="{{ asset('bundles/app/images/room-12.png') }}" data-lightbox-gallery="rooms"><img src="{{ asset('bundles/app/images/room-12.png') }}" class="img-responsive" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

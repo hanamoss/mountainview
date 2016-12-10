@@ -1,0 +1,128 @@
+<form role="form" id="form_add_org_real_estate" action="{{ path('add_organization') }}" method="POST">
+    <div class="mg-book-form-personal">
+        <h2 class="mg-sec-left-title">Real Estate</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mg-book-form-input form-group">
+                    <label>Property Name <span class="asterisk">*</span></label>
+                    {{ form_widget(formRealEstate.displayName, { 'attr':{'class':'form-control', 'data-validation':'required', 'data-validation-error-msg-required':'This field is mandatory.'} }) }}
+                </div>
+                <div class="mg-book-form-input form-group">
+                    <label>Name of Holding Company <span class="asterisk">*</span></label>
+                    {{ form_widget(formRealEstate.alternateName, { 'attr':{'class':'form-control', 'data-validation':'required', 'data-validation-error-msg-required':'This field is mandatory.'} }) }}
+                </div>
+                <div class="mg-book-form-input form-group">
+                    <label>Holding Company Number <span class="asterisk">*</span></label>
+                    {{ form_widget(formRealEstate.companyNumber, { 'attr':{'class':'form-control', 'data-validation':'required', 'data-validation-error-msg-required':'This field is mandatory.'} }) }}
+                </div>
+                <div class="mg-book-form-input form-group">
+                    <label>Building Name or Number <span class="asterisk">*</span></label>
+                    {{ form_widget(formRealEstate.address.building, { 'attr':{'class':'form-control', 'data-validation':'required', 'data-validation-error-msg-required':'This field is mandatory.'} }) }}
+                </div>
+                <div class="mg-book-form-input form-group">
+                    <label>Street Address <span class="asterisk">*</span></label>
+                    {{ form_widget(formRealEstate.address.streetAddress, { 'attr':{'class':'form-control', 'data-validation':'required', 'data-validation-error-msg-required':'This field is mandatory.'} }) }}
+                </div>
+                <div class="mg-book-form-input form-group">
+                    <label>City <span class="asterisk">*</span></label>
+                    {{ form_widget(formRealEstate.address.city, { 'attr':{'class':'form-control', 'data-validation':'required', 'data-validation-error-msg-required':'This field is mandatory.'} }) }}
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mg-book-form-input form-group">
+                            <label>Postal Code <span class="asterisk">*</span></label>
+                            {{ form_widget(formRealEstate.address.postalCode, { 'attr':{'class':'form-control', 'data-validation':'required', 'data-validation-error-msg-required':'This field is mandatory.'} }) }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mg-book-form-input form-group">
+                            <label>Locality <span class="asterisk">*</span></label>
+                            {{ form_widget(formRealEstate.address.addressLocality, { 'attr':{'class':'form-control', 'data-validation':'required', 'data-validation-error-msg-required':'This field is mandatory.'} }) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mg-book-form-input form-group">
+                            <label>Region <span class="asterisk">*</span></label>
+                            {{ form_widget(formRealEstate.address.region, { 'attr':{'class':'form-control', 'data-validation':'required', 'data-validation-error-msg-required':'This field is mandatory.'} }) }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mg-book-form-input form-group">
+                            <label>Country <span class="asterisk">*</span></label>
+                            {{ form_widget(formRealEstate.address.country, { 'attr':{'class':'form-control'} }) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mg-book-form-input form-group">
+                    <label>Total Amount of Shares <span class="asterisk">*</span></label>
+                    {{ form_widget(formRealEstate.custom.total_amount_of_shares, { 'attr':{'class':'form-control'} }) }}
+                </div>
+                <div class="mg-book-form-input form-group">
+                    <label>Brief description <span class="asterisk">*</span></label>
+                    {#<textarea class="form-control" style="min-height: 125px"></textarea>#}
+                    {{ form_widget(formRealEstate.briefDescription, { 'attr':{'class':'form-control', 'data-validation':'required', 'data-validation-error-msg-required':'This field is mandatory.'} }) }}
+                </div>
+                <div class="mg-book-form-input form-group file-container">
+                    <input type="hidden" id="logo" name="logo"/>
+                    <label>Logo <span class="asterisk">*</span></label>
+                    <div id="" class="file-area">
+                        <div class="span-button">
+                            <span class="fileinput-button upload-signed">
+                                <button class="btn btn-main btn-upload" name="upload">Upload file</button>
+                                 <p class="detail"> </p>
+                                 <input signurl="" class="s3_upload" name="logo" id="images" type="file" accept="image/png, image/gif, image/jpeg" userCallback="s3upload3">
+                                <div class="upload_status">
+                                    <div class="upload_info"><strong class="upload_name"></strong> - <span class="upload_text"></span></div>
+                                    <div class="progress_bar"><div class="percent">0%</div></div>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mg-book-form-input form-group file-container">
+                    <input type="hidden" id="floor_plan" name="floor_plan"/>
+                    <label>Floorplans <span class="asterisk">*</span></label>
+                    <div id="images_container" class="file-area">
+                        <div class="span-button">
+                            <span class="fileinput-button upload-signed">
+                                <button class="btn btn-main btn-upload" name="upload">Upload file</button>
+                                 <p class="detail"> </p>
+                                 <input signurl="" class="s3_upload" name="floor_plan[]" id="images" type="file" accept="image/png, image/gif, image/jpeg" userCallback="s3upload3">
+                                <div class="upload_status">
+                                    <div class="upload_info"><strong class="upload_name"></strong> - <span class="upload_text"></span></div>
+                                    <div class="progress_bar"><div class="percent">0%</div></div>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                    <a href="javascript:void(0)" class="btn btn-success" id="add_more_image"> + </a>
+                </div>
+                <div class="mg-book-form-input form-group file-container">
+                    <input type="hidden" id="property_logo" name="property_logo"/>
+                    <label>Property Logo <span class="asterisk">*</span></label>
+                    <div id="property_images_container" class="file-area">
+                        <div class="span-button">
+                            <span class="fileinput-button upload-signed">
+                                <button class="btn btn-main btn-upload" name="upload">Upload file</button>
+                                 <p class="detail"> </p>
+                                 <input signurl="" class="s3_upload" name="property_logo[]" id="images" type="file" accept="image/png, image/gif, image/jpeg" userCallback="s3upload3">
+                                <div class="upload_status">
+                                    <div class="upload_info"><strong class="upload_name"></strong> - <span class="upload_text"></span></div>
+                                    <div class="progress_bar"><div class="percent">0%</div></div>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                    <a href="javascript:void(0)" class="btn btn-success" id="add_more_property_image"> + </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <button id="btn_add_org_real_estate" type="submit" class="btn btn-dark-main btn-next-tab pull-right">Next</button>
+    </div>
+{{ form_end(formRealEstate) }}

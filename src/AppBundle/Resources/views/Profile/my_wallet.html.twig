@@ -1,0 +1,261 @@
+{% set active = 'profile' %}
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block title %}My wallet - Crowd Valley{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('bundles/app/css/s3.upload.css') }}" rel="stylesheet">{% endblock %}
+{% block body %}
+
+    <div class="mg-page-title parallax">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Mi Cartera de Inversión </h2>
+                    <p>Transfiere dinero a tu cuenta y empieza a invertir en proyectos de tu preferencia.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mg-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-sm-12 pull-right">
+                    <div class="mb50">
+                        <div class="wallet-total">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div >Saldo Capital:</div>
+                                    <div class="h1 mt0 mb0">$50,000</div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="wallet-buttons text-right">
+                                        <button class="btn btn-default btn-modal-withdraw" data-toggle="modal" data-target="#modal_withdraw">Retiro</button>
+                                        <button class="btn btn-default btn-modal-addFunds" data-toggle="modal" data-target="#modal_addFunds">Deposito</button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="mb30">
+                        <h2 class="mg-sec-left-title">Estado de cuenta</h2>
+                        <table class="table" id="statement">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Descripción</th>
+                                    <th style="width:150px">Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>16/10/16 13:07:46</td>
+                                    <td>
+                                        Investment in Home Grown Organization (ID: 104)
+                                    </td>
+                                    <td>£-200</td>
+                                </tr>
+                                <tr>
+                                    <td>16/10/15 13:07:50</td>
+                                    <td>
+                                        Investment in Home Grown Organization (ID: 105)
+                                    </td>
+                                    <td>£-200</td>
+                                </tr>
+                                <tr>
+                                    <td>20/10/15 10:19:51</td>
+                                    <td>
+                                        Investment in Shrubbery Road (ID: 119)
+                                    </td>
+                                    <td>£-200</td>
+                                </tr>
+                                <tr>
+                                    <td>20/10/15 10:19:53</td>
+                                    <td>
+                                        Investment in Shrubbery Road (ID: 120)
+                                    </td>
+                                    <td>£-200</td>
+                                </tr>
+                                <tr>
+                                    <td>20/10/15 10:12:38</td>
+                                    <td>
+                                        Investment in Shrubbery Road (ID: 118)
+                                    </td>
+                                    <td>£-900</td>
+                                </tr>
+                                <tr>
+                                    <td>13/11/15 09:11:10</td>
+                                    <td>
+                                        Investment in Home Grown Organization (ID: 181)
+                                    </td>
+                                    <td>£-1,000</td>
+                                </tr>
+                                <tr>
+                                    <td>08/02/16 10:51:03</td>
+                                    <td>
+                                        Investment in 11 London Road (ID: 493)
+                                    </td>
+                                    <td>£-10,000</td>
+                                </tr>
+                                <tr>
+                                    <td>09/12/15 04:42:34</td>
+                                    <td>
+                                        Investment in Home Grown Organization (ID: 266)
+                                    </td>
+                                    <td>£-25,000</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th></th>
+                                    <th class="text-right">Total</th>
+                                    <th>£0</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class="mb30">
+                        <h2 class="mg-sec-left-title">Personal Customer Referral Number</h2>
+                        <div>
+                            <span class="h4">REF2755Ukc</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-12 pull-left">
+                    <div class="mg-widget-area">
+                        <aside class="mg-widget">
+                            <h2 class="mg-widget-title">MI CUENTA</h2>
+                            <ul>
+                                <li><a href="{{ path('my_profile') }}"><i class="fa fa-user"></i> Mi perfil</a></li>
+                                <li><a href="{{ path('change_password') }}"><i class="fa fa-key"></i> Contraseña y Seguridad</a></li>
+                                <li class="active"><a href="{{ path('my_wallet') }}"><i class="fa fa-money"></i> Mi Cartera</a></li>
+                            </ul>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal withdraw -->
+    <div class="modal fade" id="modal_withdraw" tabindex="-1" role="dialog" aria-labelledby="modal_withdraw">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content ">
+                <form id="form-withdraw" action="" method="POST">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="">Withdraw</h4>
+                    </div>
+                    <div class="modal-body text-left">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>
+                                    Cash: £1000<br>
+                                    Credits: £2000</br>
+                                    <b>TOTAL: £3000</b>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="Amount">Amount</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+                                        <input type="text" class="form-control format-currency" id="withdraw-amount-field" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="account_number">Account Number</label>
+                                    <input type="text" class="form-control" name="account_number" id="account-number" placeholder="XXXXXXXX" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="sort_code">Sort Code</label>
+                                    <input type="text" class="form-control" id="sort-code-field" placeholder="XX-XX-XX">
+                                </div>
+                                <div class="text-italic" style="margin-top: 15px"><i>Please note that credit amounts cannot be withdrawn</i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer ">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Close</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="button" id="btn-submit" class="btn btn-main  btn-block">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal withdraw -->
+    <!-- Modal add fund -->
+    <div class="modal fade" id="modal_addFunds" tabindex="-1" role="dialog" aria-labelledby="modal_withdraw">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content ">
+                <form id="form-withdraw" action="" method="POST">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="">Pay-in</h4>
+                    </div>
+                    <div class="modal-body text-left">
+
+                        <p>
+                            Please fill in following information for transferring funds
+                        </p>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="Amount">Amount</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+                                        <input type="text" class="form-control format-currency" id="amount" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="date">Date</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        <input type="text" class="form-control input-datepicker" name="date" id="date" placeholder="" >
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="customerID">Customer ID</label>
+                                    <input type="text" class="form-control" id="customerID" placeholder="">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer ">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Cancel</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="button" id="btn-submit" class="btn btn-main  btn-block">Process</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal add fund -->
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function() {
+            $('.input-datepicker').datepicker({
+                startDate: "dateToday",
+                autoclose: true
+            });
+        });
+    </script>
+{% endblock %}

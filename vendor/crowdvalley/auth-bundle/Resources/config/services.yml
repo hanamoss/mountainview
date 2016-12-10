@@ -1,0 +1,16 @@
+services:
+     public:
+        class: CrowdValley\Bundle\AuthBundle\Service\PublicService
+        arguments: [@service_container, %cv_api_endpoint%, %cv_api_key%, %cv_api_secret%, @session]
+
+     user:
+        class: CrowdValley\Bundle\AuthBundle\Service\UserService
+        arguments: [@service_container, %cv_api_endpoint%, @session]
+
+     client:
+        class: CrowdValley\Bundle\AuthBundle\Service\CVClient
+        arguments: [@service_container, %cv_api_endpoint%]
+
+     client_util:
+        class: CrowdValley\Bundle\AuthBundle\Service\ClientUtilService
+        arguments: [@service_container]

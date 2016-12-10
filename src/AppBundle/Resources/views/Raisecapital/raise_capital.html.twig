@@ -1,0 +1,422 @@
+{% set active = 'raise_capital' %}
+{% extends 'AppBundle::base.html.twig' %}
+{% form_theme formPrivateCompany _self %}
+
+{% block choice_widget_expanded %}
+    {% spaceless %}
+        <div>
+            {% for child in form %}
+                {% if multiple %}
+                {% else %}
+                {% endif %}
+
+                {{ form_widget(child) }}
+            {% endfor %}
+        </div>
+    {% endspaceless %}
+{% endblock choice_widget_expanded %}
+
+{% block checkbox_widget %}
+    {% spaceless %}
+        {% if label is empty %}
+            {% set label = name|humanize %}
+        {% endif %}
+        <label  for="{{ id }}">
+            <input type="checkbox" class="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} /> {{ label|trans({}, translation_domain) }}
+        </label>
+    {% endspaceless %}
+{% endblock checkbox_widget %}
+
+{% block title %}Raise Capital - Crowd Valley{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('bundles/app/css/s3.upload.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/app/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+	<div class="mg-page-title parallax">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>BORROWER APPLICATION FORM</h2>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ullamcorper mi quis mattis pharetra. Fusce at lectus eget diam efficitur tristique. Maecenas id turpis aliquam sem faucibus dapibus. In a pretium risus.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="mg-page">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="mg-booking-form">
+                        <div id="alert-errors" class="alert alert-danger clearfix mt0 mb50" >
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <div class="mg-alert-icon pull-left"><i class="fa fa-exclamation"></i></div>
+                            <h3 id="errors" style="display: table; padding-left: 20px; margin-top: 10px">
+                                You must validate your email address before completing your funding application
+                            </h3>
+                        </div>
+						<ul class="nav nav-tabs" role="tablist" id="tablist">
+							<li role="presentation" class="active">
+								<a href="#register" aria-controls="login" role="tab" data-toggle="tab"><span class="mg-bs-tab-num">1</span><span class="mg-bs-bar"></span>Register</a>
+							</li>
+							<li role="presentation">
+								<a href="#aboutbusiness" aria-controls="personal-info" role="tab" data-toggle="tab"><span class="mg-bs-tab-num">2</span><span class="mg-bs-bar"></span>About Your Organization</a>
+							</li>
+							<li role="presentation">
+								<a href="#offering" aria-controls="documents" role="tab" data-toggle="tab"><span class="mg-bs-tab-num">3</span><span class="mg-bs-bar"></span>Offering</a>
+							</li>
+							<li role="presentation">
+								<a href="#submitapplication" aria-controls="continue" role="tab" data-toggle="tab"><span class="mg-bs-tab-num">4</span>Submit Application</a>
+							</li>
+						</ul>
+
+						<div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade in active" id="register">
+
+                                <div class="row">
+                                    <div class="col-md-10 col-md-offset-1">
+                                        {% include 'AppBundle:Registration:register.html.twig' %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="aboutbusiness">
+                                <div class="text-center mt50">
+                                    <a class="btn btn-default btn-organization-type" data-org="1">Real Estate</a>
+                                    <span>or</span>
+                                    <a class="btn btn-default btn-organization-type" data-org="2">Private Company </a>
+                                </div>
+                                <div id="real-estate-type" class="hide-all">
+                                    {% include 'AppBundle:Raisecapital:add_org_real_estate.html.twig' %}
+                                </div>
+                                <div id="private-company-type" class="hide-all">
+                                    {% include 'AppBundle:Raisecapital:add_org_private_company.html.twig' %}
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="offering">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="mg-book-form-billing">
+                                            <h2 class="mg-sec-left-title">Your Offering</h2>
+                                            {#<div>
+                                                <p>You will need to provide some documents in order to support our screening process.</p>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="mg-book-form-input form-group">
+                                                        <label for="PaymentType">Proof of Identity</label>
+                                                        <div class="upload-group fileinput-button">
+                                                            <button class="btn btn-main btn-block" style="margin-bottom: 5px;" >Upload Document</button>
+                                                            <input id="" class="s3_upload " style="text-transform: none;cursor:pointer;" type="file" name="file_logo" signUrl = "" userCallback="uploadAvatar" accept="image/jpeg,image/png"/>
+                                                            <div class="upload_status" style="display: none">
+                                                                <div class="upload_info">
+                                                                    <strong class="upload_name"></strong> -
+                                                                    <span id="id_upload_text" class="upload_text"></span>
+                                                                </div>
+                                                                <div class="progress_bar">
+                                                                    <div class="percent">0%</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="mg-book-form-input form-group">
+                                                        <label>Proof of Registration</label>
+                                                        <div class="upload-group fileinput-button">
+                                                            <button class="btn btn-main btn-block" style="margin-bottom: 5px;" >Upload Document</button>
+                                                            <input id="" class="s3_upload " style="text-transform: none;cursor:pointer;" type="file" name="file_logo" signUrl = "" userCallback="uploadAvatar" accept="image/jpeg,image/png"/>
+                                                            <div class="upload_status" style="display: none">
+                                                                <div class="upload_info">
+                                                                    <strong class="upload_name"></strong> -
+                                                                    <span id="id_upload_text" class="upload_text"></span>
+                                                                </div>
+                                                                <div class="progress_bar">
+                                                                    <div class="percent">0%</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="mg-book-form-input form-group">
+                                                        <label>Articles of Association</label>
+                                                        <div class="upload-group fileinput-button">
+                                                            <button class="btn btn-main btn-block" style="margin-bottom: 5px;" >Upload Document</button>
+                                                            <input id="" class="s3_upload " style="text-transform: none;cursor:pointer;" type="file" name="file_logo" signUrl = "" userCallback="uploadAvatar" accept="image/jpeg,image/png"/>
+                                                            <div class="upload_status" style="display: none">
+                                                                <div class="upload_info">
+                                                                    <strong class="upload_name"></strong> -
+                                                                    <span id="id_upload_text" class="upload_text"></span>
+                                                                </div>
+                                                                <div class="progress_bar">
+                                                                    <div class="percent">0%</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="mg-book-form-input form-group">
+                                                        <label>Shareholder Declaration</label>
+                                                        <div class="upload-group fileinput-button">
+                                                            <button class="btn btn-main btn-block" style="margin-bottom: 5px;" >Upload Document</button>
+                                                            <input id="" class="s3_upload " style="text-transform: none;cursor:pointer;" type="file" name="file_logo" signUrl = "" userCallback="uploadAvatar" accept="image/jpeg,image/png"/>
+                                                            <div class="upload_status" style="display: none">
+                                                                <div class="upload_info">
+                                                                    <strong class="upload_name"></strong> -
+                                                                    <span id="id_upload_text" class="upload_text"></span>
+                                                                </div>
+                                                                <div class="progress_bar">
+                                                                    <div class="percent">0%</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>#}
+
+                                            <h2 class="mg-sec-left-title mt10">Offering type</h2>
+                                            <div class="mt10">
+                                                <button class="btn btn-default btn-offering-type" data-offering="1">Debt</button>
+                                                <span>or</span>
+                                                <button class="btn btn-default btn-offering-type" data-offering="2">Equity </button>
+                                            </div>
+                                            <div id="debt-offering" class="hide-all">
+                                                {% include 'AppBundle:Raisecapital:add_debt_offering.html.twig' %}
+                                            </div>
+                                            <div id="equity-offering" class="hide-all">
+                                                {% include 'AppBundle:Raisecapital:add_equity_offering.html.twig' %}
+                                            </div>
+                                        </div>
+                                        <div>
+                                            {#<a href="#submitapplication" class="btn btn-dark-main btn-nextTab pull-right">Next</a>#}
+                                            <a href="#aboutbusiness" class="btn btn-default btn-prev-tab pull-left">Back</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="submitapplication">
+                                <br>
+                                <div class="alert alert-success clearfix">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <div class="mg-alert-icon"><i class="fa fa-check"></i></div>
+                                    <h3 class="mg-alert-payment">Congratulations! You have successfully submitted your application.</h3>
+                                </div>
+                            </div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('bundles/app/js/s3.upload.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/jquery.validate.min.js') }}"></script>
+	<script>
+        var currentTab = "{{ current_tab }}";
+        var addMoreDocument = function(id, idLink, idContainer, type){
+            var put_s3aws_url = $('#put_s3aws_url').val();
+            var accept = '';
+            switch(type) {
+                case 'image':
+                    accept = 'accept="image/png, image/gif, image/jpeg"';
+                    break;
+                case 'video':
+                    accept = '';
+                    break;
+                default:
+                    accept = '';
+            }
+            $('#'+idLink).on('click', function (e) {
+                e.preventDefault();
+                var html = '<div class="span-button"><span class="fileinput-button upload-signed"><button class="btn btn-main btn-upload" name="upload">Upload file</button><p class="detail"></p>';
+                html += '<input id="'+ id +'" '+ accept +' name="'+id+'[]"' +'type="file" class="s3_upload" signurl='+ put_s3aws_url +' userCallback="s3upload3">';
+                html += '<div class="upload_status"><div class="upload_info"><strong class="upload_name"></strong> - <span class="upload_text"></span></div><div class="progress_bar"><div class="percent">0%</div></div></div></span>' +
+                        '<a href="javascript:void(0)" class="delete-document">x Delete</a></div>';
+                html += '';
+                html += '</div>';
+                $('#'+idContainer).append(html);
+            });
+            $('#'+idContainer).on('click', '.delete-document', function (e) {
+                e.preventDefault();
+                var $container = $('#'+idContainer);
+                return deleteFile($container, $(this));
+            });
+        }
+
+        var deleteFile = function($target, el) {
+            var $numFiles = $target.find('.fileinput-button').length;
+            if ($numFiles > 1) {
+                el.parent().remove();
+            } else {
+                var $parent = el.parent();
+                var $inputFile = $parent.find('.s3_upload');
+                $inputFile.attr('filename', '');
+                $inputFile.attr('s3_url', '');
+                $parent.find('.upload_status').hide();
+                el.remove();
+            }
+            return true;
+        };
+
+
+        $(document).ready(function(){
+            if (currentTab == 'aboutBusiness') {
+                $('ul#tablist li:nth-child(2) a').click();
+                $('ul#tablist li:first a').click(function() { return false; });
+            } else if (currentTab == 'offering') {
+                 $('ul#tablist li:nth-child(3) a').click();
+                 $('ul#tablist li:first a').click(function() { return false; });
+            }  else if (currentTab == 'submitapplication') {
+                 $('ul#tablist li:nth-child(4) a').click();
+                 $('ul#tablist li:first a').click(function() { return false; });
+            } else {
+                $('ul#tablist li:nth-child(2) a').on('click', function (e) {
+                    e.stopPropagation();
+                    $("#form_sign_up").submit();
+                });
+            }
+
+            $('.input-datepicker').datepicker({
+                startDate: "dateToday",
+                autoclose: true
+            });
+
+            addMoreDocument('images', 'add_more_image', 'images_container', 'image');
+            addMoreDocument('images', 'add_more_property_image', 'property_images_container', 'image');
+
+            $(".btn-organization-type").click(function(){
+                var type = $(this).data("org");
+                $(".hide-all").hide();
+                $(".btn-organization-type").removeClass("btn-main");
+                $(this).addClass("btn-main");
+                if(type == 1){
+                    $("#real-estate-type").fadeIn();
+                }
+                else if(type ==2){
+                    $("#private-company-type").fadeIn();
+                }
+            });
+
+            $(".btn-offering-type").click(function(){
+                var type = $(this).data("offering");
+                $(".hide-all").hide();
+                $(".btn-offering-type").removeClass("btn-main");
+                $(this).addClass("btn-main");
+                if(type == 1){
+                    $("#debt-offering").fadeIn();
+                }
+                else if(type ==2){
+                    $("#equity-offering").fadeIn();
+                }
+            });
+
+            /*var validator = $("#form-application").validate({
+                /!*errorElement: "div",
+                errorPlacement: function(error, element) {
+                    error.appendTo("div#errors");
+                },*!/
+                rules: {
+                    "email": {
+                        required: true,
+                        email: true
+                    }
+                }
+            });*/
+
+            $(".btn-nextTab").click(function(){
+
+                var currentTab = $(this).parents('.tab-pane');
+                var nextTab = $(this).attr('href');
+
+                var valid = true;
+                $('input[required]', currentTab).each(function(i, v){
+                    valid = validator.element(v) && valid;
+                });
+
+                if(!valid){
+                    $("#alert-errors").show();
+                    return;
+                }
+                else{
+                    $("#alert-errors").hide();
+                    $(this).tab('show');
+
+                    $('html, body').animate({
+                        scrollTop: $(".mg-booking-form").offset().top - 100
+                    }, 300);
+
+                    $('a[href="'+nextTab+'"]').parents('li').trigger('click');
+                    $('.mg-booking-form > ul > li.active').removeClass('active');
+                    $('a[href="'+nextTab+'"]').parents('li').addClass('active');
+                }
+            });
+
+            $('#btn_signUp').on('click', function (e) {
+                $('ul#tablist li:first a').click();
+                $(this).css("color", "#FFF");
+                $("#form_sign_up").submit();
+            });
+            /*if (currentTab == 'aboutBusiness' || currentTab == 'offering' || currentTab == 'submitapplication') {
+                //$('ul#tablist li:nth-child(2) a').click();
+                $('ul#tablist li:first a').click(function() { return false; });
+            } else if (currentTab == 'offering') {
+                $('ul#tablist li:nth-child(3) a').click();
+                $('ul#tablist li:first a').click(function() { return false; });
+                $('ul#tablist li:nth-child(2) a').click(function() { return false; });
+            }  else if (currentTab == 'submitapplication') {
+                $('ul#tablist li:nth-child(4) a').click();
+                $('ul#tablist li:first a').click(function() { return false; });
+                $('ul#tablist li:nth-child(2) a').click(function() { return false; });
+                $('ul#tablist li:nth-child(3) a').click(function() { return false; });
+            } else {
+                $('ul#tablist li:nth-child(2) a').on('click', function (e) {
+                    e.stopPropagation();
+                    $("#form_sign_up").submit();
+                });
+            }*/
+            $('#btn_add_org_real_estate').on('click', function (e) {
+                /*$('ul#tablist li:first a').click();
+                $(this).css("color", "#FFF");*/
+                $("#form_add_org_real_estate").submit();
+            });
+            $('#btn_add_org_private_company').on('click', function (e) {
+                /*$('ul#tablist li:first a').click();
+                 $(this).css("color", "#FFF");*/
+                $("#form_add_org_private_company").submit();
+            });
+            $('#btn_add_debt_offering').on('click', function (e) {
+                /*$('ul#tablist li:first a').click();
+                 $(this).css("color", "#FFF");*/
+                $("#form_add_debt_offering").submit();
+            });
+            $('#btn_add_equity_offering').on('click', function (e) {
+                /*$('ul#tablist li:first a').click();
+                 $(this).css("color", "#FFF");*/
+                $("#form_add_equity_offering").submit();
+            });
+        });
+
+        function s3upload3(target) {
+            var $this = $(target),
+                    filename = $this.attr('filename'),
+                    s3_url = $this.attr('s3_url'),
+                    fileType = $this.attr('file_type');
+            var fileTag = 'logo';
+            if ($this.attr('name') == 'floor_plan[]')
+                fileTag = 'floor_plan';
+            if ($this.attr('name') == 'property_logo[]')
+                fileTag = 'property_logo';
+            var file_json = {"file_name": filename, "url": s3_url, "file_type": fileType, "tag": fileTag};
+            var str_json = JSON.stringify(file_json);
+            $this.closest('div.file-container').find('input[type="hidden"]').val(str_json);
+        }
+
+	</script>
+{% endblock %}

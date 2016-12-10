@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Crowd Valley">
+    <title>{% block title %}Crowd Valley Starter App{% endblock %}</title>
+    <meta name="description" content="{% block description %}Crowd Valley Demo App{% endblock %}">
+    <meta name="author" content="Crowd Valley">
+    <meta name="keywords" content="" />
+
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic|Playfair+Display:400,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap -->
+    <link href="{{ asset('bundles/app/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/app/css/font-awesome.min.css') }}" rel="stylesheet">
+
+    {% block stylesheets %}{% endblock %}
+    <link href="{{ asset('bundles/app/css/style.css') }}" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src="{{ asset('bundles/app/js/html5shiv.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/respond.min.js') }}"></script>
+    <![endif]-->
+    <script src="{{ asset('bundles/app/js/modernizr.custom.min.js') }}"></script>
+</head>
+
+<body>
+<div class="preloader"></div>
+{% set authenticated = app.session.get('authenticated') %}
+
+{% block header %}
+    {% include('AppBundle:Common:header.html.twig') %}
+{% endblock %}
+
+{% block body %}
+{% endblock %}
+
+{% block footer %}
+    {% include('AppBundle:Common:footer.html.twig') %}
+{% endblock %}
+
+{# Code popup #}
+<div class="modal fade" id="modal-code" tabindex="-1" role="dialog" aria-labelledby="modal-code" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+<!-- Alert modal -->
+<div class="modal fade" id="modal-error" tabindex="-1" role="dialog" aria-labelledby="modal-error" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="alert alert-info fade in">
+            <div id="modal-message">
+            </div>
+        </div>
+    </div>
+</div>
+
+{# Log In popup #}
+{% if not app.session.get('authenticated') %}
+	<!-- begin:modal-signin -->
+	<div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="modal-login" aria-hidden="true">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+
+				{{ render(controller('AppBundle:Public:signIn')) }}
+
+			</div>
+		</div>
+	</div>
+{% endif %}
+
+<script src="{{ asset('bundles/app/js/jquery.min.js') }}"></script>
+<script src="{{ asset('bundles/app/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('bundles/app/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('bundles/app/js/jssor.slider.mini.js') }}"></script>
+<script src="{{ asset('bundles/app/js/classie.js') }}"></script>
+<script src="{{ asset('bundles/app/js/selectFx.js') }}"></script>
+<script src="{{ asset('bundles/app/js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('bundles/app/js/starrr.min.js') }}"></script>
+<script src="{{ asset('bundles/app/js/nivo-lightbox.min.js') }}"></script>
+<script src="{{ asset('bundles/app/js/jquery.shuffle.min.js') }}"></script>
+<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script src="{{ asset('bundles/app/js/gmaps.min.js') }}"></script>
+<script src="{{ asset('bundles/app/js/jquery.parallax-1.1.3.js') }}"></script>
+<script src="{{ asset('bundles/app/js/jquery.form-validator.js') }}"></script>
+<script src="{{ asset('bundles/app/js/script.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $(document).ajaxError(function myErrorHandler(event, jqXHR, ajaxOptions, thrownError) {
+            var msg = '';
+            if (jqXHR.status === 0) {
+                msg = 'Unable to connect to the Internet.';
+            } else if (jqXHR.status == 404) {
+                msg = 'Requested page not found. [404]';
+            } else if (jqXHR.status == 500) {
+                msg = 'Internal Server Error [500].';
+            } else if (exception === 'parsererror') {
+                msg = 'Requested JSON parse failed.';
+            } else if (exception === 'timeout') {
+                msg = 'Time out error.';
+            } else if (exception === 'abort') {
+                msg = 'Ajax request aborted.';
+            } else {
+                msg = 'Uncaught Error.\n' + jqXHR.responseText;
+            }
+            $("#modal-message").html(msg);
+            $('#modal-error').modal({show: true});
+        });
+    })
+</script>
+{% block javascripts %}{% endblock %}
+</body>
+</html>

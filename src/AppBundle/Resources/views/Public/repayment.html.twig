@@ -1,0 +1,96 @@
+{% set active = 'user' %}
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block title %}Repayment{% endblock %}
+
+{% block body %}
+
+    <div class="mg-page-title parallax">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>REPAYMENT</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mg-page">
+        <div class="container">
+            <h1 class="text-center mb30" style="color: #e7b315">DIVIDEND REPAYMENT</h1>
+            <form action="">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="">Organization </label>
+                            <select class="form-control">
+                                <option value="">Option 1</option>
+                                <option value="">Option 2</option>
+                                <option value="">Option 3</option>
+                                <option value="">Option 4</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="">Date</label>
+                            <input type="text" class="form-control input-datepicker">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="">Amount</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="" style="display: block">&nbsp;</label>
+                            <button type="submit" class="btn btn-main">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <br>
+            <h3 class="text-center mb30">TRANSACTION HISTORY</h3>
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Repayment</th>
+                    <th>Due Date</th>
+                </tr>
+                <tr>
+                    <td>payment #1</td>
+                    <td>Lorem ipsum dolor sit amet</td>
+                    <td> Lipsum</td>
+                    <td> 1/1/2016</td>
+                </tr>
+                <tr>
+                    <td>payment #1</td>
+                    <td>Lorem ipsum dolor sit amet</td>
+                    <td> Lipsum</td>
+                    <td> 1/1/2016</td>
+                </tr>
+                <tr>
+                    <td>payment #1</td>
+                    <td>Lorem ipsum dolor sit amet</td>
+                    <td> Lipsum</td>
+                    <td> 1/1/2016</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(document).ready(function() {
+            $('.input-datepicker').datepicker({
+                startDate: "dateToday",
+                autoclose: true
+            });
+        });
+    </script>
+{% endblock %}

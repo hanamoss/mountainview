@@ -1,0 +1,149 @@
+{% set active = 'offerings' %}
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block title %}Properties - Crowd Valley{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('bundles/app/css/nivo-lightbox.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/app/css/nivo-lightbox-theme.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+
+    <div class="mg-page-title parallax">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Properties</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mg-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="mg-widget-area">
+                        <div class="mg-widget-v1">
+                            <h5 class="mt0">SHOW </h5>
+                            <div class="checkbox checkbox-list">
+                                <label for="All">
+                                    <input type="checkbox" class="radio" id="All" name="metric" value="All">All
+                                </label>
+                                <label for="Closed">
+                                    <input type="checkbox" class="radio" id="Closed" name="metric" value="Closed">Closed
+                                </label>
+                                <label for="Completed">
+                                    <input type="checkbox" class="radio" id="Completed" name="metric" value="Completed"> Completed
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mg-widget-v1">
+                            <h5 class="mt0">FILTER BY </h5>
+                            <div class="checkbox checkbox-list">
+                                <label for="Most_Recent">
+                                    <input type="checkbox" class="checkbox" id="Most_Recent" name="metric" value="Most Recent">Most Recent
+                                </label>
+                                <label for="Most_popular">
+                                    <input type="checkbox" class="checkbox" id="Most_popular" name="metric" value="Most_popular"> Most Popular
+                                </label>
+                                <label for="Ending_soonest">
+                                    <input type="checkbox" class="checkbox" id="Ending_soonest" name="metric" value="Ending soonest"> Ending Soonest
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="row mg-list">
+                        <div class="col-sm-6">
+                            <figure class="relative mg-property">
+                                <img src="{{ asset('bundles/app/images/room-1.png') }}" alt="img11" class="img-responsive">
+                                <figcaption>
+                                    <h2>Property 1</h2>
+                                    <p class="small">Location</p>
+                                    <div class="mg-short-info">
+                                        <p>Funding Target</p>
+                                        <p>Expected Return</p>
+                                        <p>Project Term</p>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="60" aria-valuemax="100" style="width: 60%; min-width: 2em">
+                                            <span>60% Funded</span>
+                                        </div>
+                                    </div>
+                                    <a href="{{ path('property_overview') }}" class="property-link">&nbsp;</a>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-sm-6">
+                            <figure class="relative mg-property">
+                                <img src="{{ asset('bundles/app/images/room-2.png') }}" alt="img11" class="img-responsive">
+                                <figcaption>
+                                    <h2>Property 2</h2>
+                                    <p class="small">Location</p>
+                                    <div class="mg-short-info">
+                                        <p>Funding Target</p>
+                                        <p>Expected Return</p>
+                                        <p>Project Term</p>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%; min-width: 2em">
+                                            <span>30% Funded</span>
+                                        </div>
+                                    </div>
+                                    <a href="{{ path('property_overview') }}" class="property-link">&nbsp;</a>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-sm-6">
+                            <figure class="relative mg-property">
+                                <img src="{{ asset('bundles/app/images/room-3.png') }}" alt="img11" class="img-responsive">
+                                <figcaption>
+                                    <h2>Property 3</h2>
+                                    <p class="small">Location</p>
+                                    <div class="mg-short-info">
+                                        <p>Funding Target</p>
+                                        <p>Expected Return</p>
+                                        <p>Project Term</p>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%; min-width: 2em">
+                                            <span>70% Funded</span>
+                                        </div>
+                                    </div>
+                                    <a href="{{ path('property_overview') }}" class="property-link">&nbsp;</a>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-sm-6">
+                            <figure class="relative mg-property">
+                                <img src="{{ asset('bundles/app/images/room-4.png') }}" alt="img11" class="img-responsive">
+                                <figcaption>
+                                    <h2>Property 4</h2>
+                                    <p class="small">Location</p>
+                                    <div class="mg-short-info">
+                                        <p>Funding Target</p>
+                                        <p>Expected Return</p>
+                                        <p>Project Term</p>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%; min-width: 2em">
+                                            <span>90% Funded</span>
+                                        </div>
+                                    </div>
+                                    <a href="{{ path('property_overview') }}" class="property-link">&nbsp;</a>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+{% endblock %}

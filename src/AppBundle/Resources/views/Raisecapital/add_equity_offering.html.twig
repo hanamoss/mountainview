@@ -1,0 +1,54 @@
+<form role="form" id="form_add_equity_offering" action="{{ path('add_offering') }}" method="POST">
+    <div class="row mt50">
+        <div class="col-md-6">
+            <div class="mg-book-form-input form-group">
+                <label>Organization <span class="asterisk">*</span></label>
+                {{ form_widget(formEquityOffering.id, { 'attr':{'class':'form-control', 'data-validation':'required', 'data-validation-error-msg-required':'This field is mandatory.'} }) }}
+            </div>
+            <div class="mg-book-form-input form-group">
+                <label>Name of the Offering <span class="asterisk">*</span></label>
+                {{ form_widget(formEquityOffering.name, { 'attr':{'class':'form-control', 'data-validation':'required', 'data-validation-error-msg-required':'This field is mandatory.'} }) }}
+            </div>
+            <div class="mg-book-form-input form-group">
+                <label>Funding Goal <span class="asterisk">*</span></label>
+                {{ form_widget(formEquityOffering.fundingGoal, { 'attr':{'class':'form-control', 'data-validation':'required number', 'data-validation-error-msg-required':'This field is mandatory.'} }) }}
+            </div>
+            <div class="mg-book-form-input form-group">
+                <label>Interest Rate <span class="asterisk">*</span></label>
+                {{ form_widget(formEquityOffering.interestRate, { 'attr':{'class':'form-control', 'data-validation':'required', 'data-validation-allowing':'float', 'data-validation-error-msg-required':'This field is mandatory.'} }) }}
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mg-book-form-input form-group">
+                        <label>Open Date <span class="asterisk">*</span></label>
+                        {{ form_widget(formEquityOffering.openDate, { 'attr':{'class':'form-control input-datepicker', 'data-validation':'required', 'data-validation-error-msg-required':'This field is mandatory.'} }) }}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mg-book-form-input form-group">
+                        <label>Close Date <span class="asterisk">*</span></label>
+                        {{ form_widget(formEquityOffering.closeDate, { 'attr':{'class':'form-control input-datepicker', 'data-validation':'required', 'data-validation-error-msg-required':'This field is mandatory.'} }) }}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="mg-book-form-input form-group">
+                <label>Offering Description <span class="asterisk">*</span></label>
+                {{ form_widget(formEquityOffering.offeringDescription, { 'attr':{'class':'form-control', 'data-validation':'required', 'data-validation-error-msg-required':'This field is mandatory.'} }) }}
+            </div>
+            <div class="mg-book-form-input form-group">
+                <label>External Commitments</label>
+                {{ form_widget(formEquityOffering.externalCommitments, { 'attr':{'class':'form-control', 'data-validation':'number', 'data-validation-optional':'true'} }) }}
+            </div>
+            <div class="mg-book-form-input form-group">
+                <label>Maximum Funding Amount</label>
+                {{ form_widget(formEquityOffering.maximumOverfundingAmount, { 'attr':{'class':'form-control', 'data-validation':'number', 'data-validation-optional':'true'} }) }}
+            </div>
+        </div>
+    </div>
+    <div>
+        <button id="btn_add_equity_offering" type="submit" class="btn btn-dark-main btn-next-tab pull-right">Next</button>
+    </div>
+{{ form_end(formEquityOffering) }}

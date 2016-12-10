@@ -1,0 +1,243 @@
+{% set active = 'offerings' %}
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block title %}{{ offering.name|default('') }} - Crowd Valley{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('bundles/app/css/owl.carousel.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/app/css/owl.theme.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/app/css/owl.transitions.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/app/css/cs-select.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/app/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/app/css/freepik.hotels.css') }}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+    <div class="mg-page-title parallax">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>{{ offering.name|default('') }}</h2>
+                    <p>{{ offering.offeringDescription|default('') }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mg-single-room-price">
+        <div class="mg-srp-inner">{{ offering.raisedPercent }}% <span>Funded</span></div>
+    </div>
+    <div class="mg-single-room">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="mg-gallery-container">
+                        <ul class="mg-gallery" id="mg-gallery">
+                            <li><img src="{{ asset('bundles/app/images/gallery-01.png') }}" alt="Partner Logo"></li>
+                            <li><img src="{{ asset('bundles/app/images/gallery-02.png') }}" alt="Partner Logo"></li>
+                            <li><img src="{{ asset('bundles/app/images/gallery-05.png') }}" alt="Partner Logo"></li>
+                            <li><img src="{{ asset('bundles/app/images/gallery-06.png') }}" alt="Partner Logo"></li>
+                            <li><img src="{{ asset('bundles/app/images/gallery-07.png') }}" alt="Partner Logo"></li>
+                            <li><img src="{{ asset('bundles/app/images/gallery-08.png') }}" alt="Partner Logo"></li>
+                        </ul>
+                        <ul class="mg-gallery-thumb" id="mg-gallery-thumb">
+                            <li><img src="{{ asset('bundles/app/images/gallery-thumb-01.png') }}" alt="Partner Logo"></li>
+                            <li><img src="{{ asset('bundles/app/images/gallery-thumb-02.png') }}" alt="Partner Logo"></li>
+                            <li><img src="{{ asset('bundles/app/images/gallery-thumb-05.png') }}" alt="Partner Logo"></li>
+                            <li><img src="{{ asset('bundles/app/images/gallery-thumb-06.png') }}" alt="Partner Logo"></li>
+                            <li><img src="{{ asset('bundles/app/images/gallery-thumb-07.png') }}" alt="Partner Logo"></li>
+                            <li><img src="{{ asset('bundles/app/images/gallery-thumb-08.png') }}" alt="Partner Logo"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-5 mg-room-fecilities">
+                    <h2 class="mg-sec-left-title">Offering Information</h2>
+                    <dl class="dl-horizontal dl-offering-info">
+                        <dt>Raising</dt>
+                        <dd>${{ offering.fundingGoal|number_format }}</dd>
+                        <dt>External Commitments</dt>
+                        <dd>${{ offering.externalCommitments|number_format }}</dd>
+                        <dt>Raised</dt>
+                        <dd>${{ offering.amountRaised|number_format }}</dd>
+                        <dt>Equity Offered</dt>
+                        <dd>{{ offering.equityOffered|number_format(2) }}%</dd>
+                        <dt>Days Left</dt>
+                        <dd>{{ offering.closeDate|days_left }} days left</dd>
+                        <dt>Minimum per investor</dt>
+                        <dd>${{ offering.minimumCommitment|number_format }}</dd>
+                    </dl>                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mg-single-room-txt">
+                        <h2 class="mg-sec-left-title">About the Organization</h2>
+                        <p>{{ organization.detailedDescription|default('No description found.') }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mg-saerch-room pb70">
+                    <div class="mg-book-now">
+                        <div class="row">
+							<div class="col-md-6">
+								<div class="row">
+									<div class="col-md-6">
+										{% if authenticated %}
+											<h2 class="mg-bn-title no-box-shadow">Invest Now <span class="mg-bn-big">Wallet Balance $9,000</span></h2>
+										{% else %}
+											<h2 class="mg-bn-title no-box-shadow">Log In <span class="mg-bn-big">to Invest</span></h2>										
+										{% endif %}
+									</div>
+									<div class="col-md-6">
+										<div class="mg-bn-forms form-add-fund">
+										{% if authenticated %}
+											<button type="submit" class="btn btn-main-clean btn-block">Add Funds</button>
+										{% else %}
+											<button type="submit" href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn btn-main-clean btn-block">Log In</button>
+										{% endif %}
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="mg-bn-forms">
+									<form>
+										<div class="row">
+											<div class="col-md-7 col-xs-12">
+												<div class="input-group ">
+													<div class="input-group-addon"><i class="fa fa-dollar"></i></div>
+													<input type="text" class="form-control" id="" placeholder="Min. ${{ offering.minimumCommitment|number_format }}" {% if not authenticated %}disabled{% endif %}>
+												</div>
+											</div>
+											<div class="col-md-5 col-xs-12">
+												<button type="submit" class="btn btn-main btn-block"{% if not authenticated %}disabled{% endif %}>Invest Now</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mg-single-room-review-sec">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 clearfix">
+                    <div class="mg-sm-full-rating">
+                        <h2 class="mg-sec-left-title">Discussion Forum</h2>
+                    </div>
+                </div>
+            </div>
+            {% if not authenticated %}
+				<div>
+					<p><a href="#modal-login" data-toggle="modal" data-target="#modal-login">Log In</a> to view the discussion forum</p>
+				</div>
+			{% else %}
+				<div class="row">
+					<div class="col-md-7">
+						<div class="mg-reviews">
+							<div class="media">
+								<div class="media-left">
+									<a href="#">
+										<img class="media-object" src="{{ asset('bundles/app/images/review.png') }}" alt="...">
+									</a>
+								</div>
+								<div class="media-body">
+									<div>
+										<h4 class="media-heading">Dylan Taylor <label class="label label-info label-title">Founder</label></h4>
+										<div class="media-date">25 Jan, 2015</div>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perfunctio dicturum cupiditatibusque refugiendi facillimis genuit fecerit amoris atomos. Praeclarorum, superstitio quem nostra turpius</p>
+									</div>
+									<div class="list-comments">
+										<ul class=" list-unstyled">
+											<li>
+												<div class="media">
+													<div class="media-left">
+														<a href="#">
+															<img class="media-object" src="{{ asset('bundles/app/images/review.png') }}" alt="...">
+														</a>
+													</div>
+													<div class="media-body">
+														<div>
+															<h4 class="media-heading">John <label class="label label-info label-title">Founder</label></h4>
+															<div class="media-date">25 Jan, 2015</div>
+															<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perfunctio dicturum cupiditatibusque refugiendi facillimis genuit fecerit amoris atomos. Praeclarorum, superstitio quem nostra turpius</p>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="media">
+													<div class="media-left">
+														<a href="#">
+															<img class="media-object" src="{{ asset('bundles/app/images/review.png') }}" alt="...">
+														</a>
+													</div>
+													<div class="media-body">
+														<div>
+															<h4 class="media-heading">Michelle <label class="label label-info label-title">Founder</label></h4>
+															<div class="media-date">25 Jan, 2015</div>
+															<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perfunctio dicturum cupiditatibusque refugiendi facillimis genuit fecerit amoris atomos. Praeclarorum, superstitio quem nostra turpius</p>
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+										<div class="media comment-form">
+											<div class="media-left">
+												<a href="#">
+													<img class="media-object" src="{{ asset('bundles/app/images/review.png') }}" alt="...">
+												</a>
+											</div>
+											<div class="media-body" style="min-width: 400px">
+												<textarea class="form-control input-comment" placeholder="Add a comment"></textarea>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="media">
+								<div class="media-left">
+									<a href="#">
+										<img class="media-object" src="{{ asset('bundles/app/images/review.png') }}" alt="...">
+									</a>
+								</div>
+								<div class="media-body">
+									<div>
+										<h4 class="media-heading">Vincent Watson <label class="label label-info label-title">Founder</label></h4>
+										<div class="media-date">25 Jan, 2015</div>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perfunctio dicturum cupiditatibusque refugiendi facillimis genuit fecerit amoris atomos. Praeclarorum, superstitio quem nostra turpius</p>
+									</div>
+
+									<div class="list-comments">
+										<div class="media comment-form">
+											<div class="media-left">
+												<a href="#">
+													<img class="media-object" src="{{ asset('bundles/app/images/review.png') }}" alt="...">
+												</a>
+											</div>
+											<div class="media-body" style="min-width: 400px">
+												<textarea class="form-control input-comment" placeholder="Add a comment"></textarea>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="col-md-5">
+						<form>
+							<div class="form-group">
+								<textarea class="form-control" placeholder="Your Question" rows="5"></textarea>
+							</div>
+							<input type="submit" value="Submit New Question" class="btn btn-dark pull-right">
+						</form>
+					</div>
+				</div>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,300 @@
+{% set active = 'user' %}
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block title %}Registrate - Invierte PTY{% endblock %}
+
+{% block body %}
+	<div class="mg-page-title parallax">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>REGÍSTRATE</h2>
+					<p>
+						Crear tu cuenta es sencillo
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="mg-page">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="mg-booking-form">
+
+						<ul class="nav nav-tabs" role="tablist" id="tablist">
+							<li role="presentation" class="active">
+								<a href="#register" aria-controls="login" role="tab" data-toggle="tab"><span class="mg-bs-tab-num">1</span><span class="mg-bs-bar"></span>Registro</a>
+							</li>
+							<li role="presentation">
+								<a href="#kyc" aria-controls="personal-info" role="tab" data-toggle="tab"><span class="mg-bs-tab-num">2</span><span class="mg-bs-bar"></span>Detalles de Usuario</a>
+							</li>
+							<li role="presentation">
+								<a href="#fundwallet" aria-controls="documents" role="tab" data-toggle="tab"><span class="mg-bs-tab-num">3</span><span class="mg-bs-bar"></span>Cartera de Inversión</a>
+							</li>
+							<li role="presentation">
+								<a href="#fullacess" aria-controls="continue" role="tab" data-toggle="tab"><span class="mg-bs-tab-num">4</span>Confirmación</a>
+							</li>
+						</ul>
+
+						<div class="tab-content">
+							<div role="tabpanel" class="tab-pane fade in active" id="register">
+								<div class="row">
+									<div class="col-md-10 col-md-offset-1">
+										{% include 'AppBundle:Registration:register.html.twig' %}
+									</div>
+								</div>
+							</div>
+							<div role="tabpanel" class="tab-pane fade" id="kyc">
+								<div class="row">
+									<div class="col-md-8">
+										<form role="form" id="form_kyc" action="{{ path('kyc_check') }}" method="POST">
+										<div class="mg-book-form-personal">
+											<h2 class="mg-sec-left-title">Detalles de Usuario</h2>
+											<div class="row">
+												<div class="col-md-4">
+													<div class="mg-book-form-input form-group">
+														<label>Nombre</label>
+														{{ form_widget(formUser.given_name, { 'attr':{'class':'form-control'} }) }}
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="mg-book-form-input form-group">
+														<label>Additional (e.g. Middle) Name</label>
+														{{ form_widget(formUser.additional_name, { 'attr':{'class':'form-control'} }) }}
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="mg-book-form-input form-group">
+														<label>Apellido</label>
+														{{ form_widget(formUser.family_name, { 'attr':{'class':'form-control'} }) }}
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-4">
+													<div class="mg-book-form-input date mg-check-in form-group">
+														<label>Fecha de nacimiento</label>
+														<div class="input-group">
+															<div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+															<input type="text" class="form-control input-datepicker" placeholder="">
+														</div>
+
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="mg-book-form-input form-group">
+														<label>Género</label>
+														{{ form_widget(formUser.gender, { 'attr':{'class':'form-control'} }) }}
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-4">
+													<div class="mg-book-form-input form-group">
+														<label>Teléfono fijo</label>
+														{{ form_widget(formUser.phone_1, { 'attr':{'class':'form-control'} }) }}
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="mg-book-form-input form-group">
+														<label>Teléfono móvil</label>
+														{{ form_widget(formUser.phone_2, { 'attr':{'class':'form-control'} }) }}
+													</div>
+												</div>
+											</div>
+											<h2 class="mg-sec-left-title">Dirección</h2>
+											<div class="row">
+												<div class="col-md-4">
+													<div class="mg-book-form-input form-group">
+														<label>Nombre/Número de edificio</label>
+														{{ form_widget(formUser.address.building, { 'attr':{'class':'form-control'} }) }}
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="mg-book-form-input form-group">
+														<label>Calle</label>
+														{{ form_widget(formUser.address.street_address, { 'attr':{'class':'form-control'} }) }}
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="mg-book-form-input form-group">
+														<label>Dirección 2</label>
+														{{ form_widget(formUser.address.address_locality, { 'attr':{'class':'form-control'} }) }}
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-4">
+													<div class="mg-book-form-input form-group">
+														<label>Ciudad</label>
+														{{ form_widget(formUser.address.city, { 'attr':{'class':'form-control'} }) }}
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="mg-book-form-input form-group">
+														<label>Región</label>
+														{{ form_widget(formUser.address.region, { 'attr':{'class':'form-control'} }) }}
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="mg-book-form-input form-group">
+														<label>Código Postal</label>
+														{{ form_widget(formUser.address.postal_code, { 'attr':{'class':'form-control'} }) }}
+													</div>
+													{#<div class="form-group">
+														<a href="" class="btn btn-dark-main btn-block">Address Lookup</a>
+													</div>#}
+													<div class="mg-book-form-input form-group">
+														<label>País</label>
+														{{ form_widget(formUser.address.country, { 'attr':{'class':'form-control'} }) }}
+													</div>
+												</div>
+											</div>
+										</div>
+										<div>
+											<a href="#fundwallet" class="btn btn-dark-main btn-next-tab pull-right">Next</a>
+											{#<a href="#register" class="btn btn-default btn-prev-tab pull-left">Back</a>#}
+										</div>
+										{{ form_end(formUser) }}
+									</div>
+									<div class="col-md-4">
+										<div class="mg-cart-container">
+											<aside class="mg-widget mt50" id="mg-room-cart">
+												<h2 class="mg-widget-title">Lorem Ipsum</h2>
+												<div>
+													Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam hendrerit dictum sapien, ut ullamcorper ipsum facilisis eu. Mauris quis sapien sed nunc porttitor varius. Mauris eleifend nec dolor vitae imperdiet. Nulla iaculis felis eu aliquet gravida. Cras mi nunc, blandit ut suscipit sed, maximus id leo. Curabitur mattis tortor vitae est vulputate vulputate. Nam sed elit id augue venenatis mattis nec ut tellus.
+
+												</div>
+											</aside>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div role="tabpanel" class="tab-pane fade" id="fundwallet">
+								<div class="row">
+									<div class="col-md-10 col-md-offset-1">
+										<div class="mg-book-form-billing">
+											<h2 class="mg-sec-left-title">Cartera de Inversión</h2>
+											<div>
+												<p>You will need to have funds available in your e-wallet to be able to make an investment with Yielders. You can deposit funds to your e-wallet at any time". Please click on payment options below to proceed.</p>
+											</div>
+											<div class="row">
+												<div class="col-md-4">
+													<div class="mg-book-form-input form-group">
+														<label for="PaymentType">Método de Pago</label>
+														<select class="form-control" name="card_type" id="card_type">
+															<option value="CB_VISA_MASTERCARD">Visa/Master Card</option>
+															<option value="BANK_WIRE">Pago por Transacción Bancaria</option>
+														</select>
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="mg-book-form-input form-group">
+														<label>Cantidad</label>
+														<input type="text" class="form-control">
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="mg-book-form-input date form-group">
+														<label>Moneda</label>
+														<input type="text" class="form-control">
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div>
+											<a href="#fullacess" class="btn btn-dark-main btn-next-tab pull-right">Siguiente</a>
+											<a href="#kyc" class="btn btn-default btn-prev-tab pull-left">Atrás</a>
+										</div>
+
+									</div>
+								</div>
+							</div>
+							<div role="tabpanel" class="tab-pane fade" id="fullacess">
+								<br>
+								<div class="alert alert-success clearfix">
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									<div class="mg-alert-icon"><i class="fa fa-check"></i></div>
+									<h3 class="mg-alert-payment">Felicidades, completaste tu registro y puedes empezar a invertir de inmediato.</h3>
+								</div>
+								<h2 class="mg-sec-left-title">FEATURED OFFERINGS</h2>
+								<div class="row">
+									<div class="col-sm-4">
+										<figure class="mg-room">
+											<img src="{{ asset('bundles/app/images/room-1.png') }}" alt="img11" class="img-responsive">
+											<figcaption>
+												<h2>Super Deluxe</h2>
+												<div class="mg-room-rating">Coming Soon</div>
+												<div class="mg-room-price">$249<sup>.99/Night</sup></div>
+												<p>adversantur probatum iudicante indicaverunt repugnantibus.</p>
+												<a href="{{ path('offerings_overview') }}" class="btn btn-link">View Details <i class="fa fa-angle-double-right"></i></a>
+												<a href="{{ path('offerings_overview') }}" class="btn btn-main">Book</a>
+											</figcaption>
+										</figure>
+									</div>
+									<div class="col-sm-4">
+										<figure class="mg-room">
+											<img src="{{ asset('bundles/app/images/room-2.png') }}" alt="img11" class="img-responsive">
+											<figcaption>
+												<h2>Super Deluxe</h2>
+												<div class="mg-room-rating">Closing</div>
+												<div class="mg-room-price">$249<sup>.99/Night</sup></div>
+												<p>adversantur probatum iudicante indicaverunt repugnantibus.</p>
+												<a href="{{ path('offerings_overview') }}" class="btn btn-link">View Details <i class="fa fa-angle-double-right"></i></a>
+												<a href="{{ path('offerings_overview') }}" class="btn btn-main">Book</a>
+											</figcaption>
+										</figure>
+									</div>
+									<div class="col-sm-4">
+										<figure class="mg-room">
+											<img src="{{ asset('bundles/app/images/room-3.png') }}" alt="img11" class="img-responsive">
+											<figcaption>
+												<h2>Super Deluxe</h2>
+												<div class="mg-room-rating">Closed</div>
+												<div class="mg-room-price">$249<sup>.99/Night</sup></div>
+												<p>adversantur probatum iudicante indicaverunt repugnantibus.</p>
+												<a href="{{ path('offerings_overview') }}" class="btn btn-link">View Details <i class="fa fa-angle-double-right"></i></a>
+												<a href="{{ path('offerings_overview') }}" class="btn btn-main">Book</a>
+											</figcaption>
+										</figure>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
+{% block javascripts %}
+	<script>
+		var currentTab = "{{ current_tab }}";
+		$(document).ready(function() {
+			$('.input-datepicker').datepicker({
+				startDate: "dateToday",
+				autoclose: true
+			});
+			$('#btn_signUp').on('click', function (e) {
+				$('ul#tablist li:first a').click();
+				$(this).css("color", "#FFF");
+				$("#form_sign_up").submit();
+			});
+			if (currentTab == 'kyc') {
+				$('ul#tablist li:nth-child(2) a').click();
+				$('ul#tablist li:first a').click(function() { return false; });
+			} else {
+				$('ul#tablist li:nth-child(2) a').on('click', function (e) {
+					e.stopPropagation();
+					$("#form_sign_up").submit();
+				});
+			}
+		});
+	</script>
+{% endblock %}

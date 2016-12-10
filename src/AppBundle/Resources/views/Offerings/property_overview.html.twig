@@ -1,0 +1,87 @@
+{% set active = 'offerings' %}
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block title %}Property Overview - Crowd Valley{% endblock %}
+
+{% block body %}
+
+    {#<div class="mg-page-title parallax">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Equity Offerings</h2>
+                    <p>Cogitavisse erant puerilis utrum efficiantur adhuc expeteretur.</p>
+                </div>
+            </div>
+        </div>
+    </div>#}
+
+    <div class="mg-page mg-available-rooms page-no-title">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mg-avl-room">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <a href="{{ path('offerings_overview') }}"><img src="{{ asset('bundles/app/images/room-1.png') }}" alt="" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-7">
+                                <h3 class="mg-avl-room-title"><a href="#">Property 1</a></h3>
+                                <div class=" mg-room-fecilities">
+                                    <div class="row">
+                                        <div class="col-md-4 col-md-push-8">
+                                            <div class="pie-charts mt10 pull-right">
+                                                <div class="easy-pie-chart" data-percent="70">70%</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8 col-md-pull-4">
+                                            <div class="mg-summary-info">
+                                                <ul>
+                                                    <li>Location </li>
+                                                    <li>Funding Round Status</li>
+                                                    <li>Minimum Investment Amount </li>
+                                                    <li>Equity Offered</li>
+                                                    <li>Amount Raised </li>
+                                                    <li>Valuation</li>
+                                                </ul>
+                                            </div>
+                                            <a data-toggle="modal" data-target="#investModal" class="btn btn-main">Invest Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="mt50">
+                            <h4>About the Property</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce interdum erat eget nulla posuere, lobortis sagittis risus dapibus. Aenean at tortor cursus, tristique lacus at, aliquet dolor.
+                                <br> Aliquam lectus nibh, fermentum sed rutrum quis, suscipit eget felis. Vestibulum non felis et nibh molestie eleifend. Vivamus ut augue in nunc ornare faucibus sed vitae augue.
+                                <br> Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam ornare vehicula gravida. Donec nec semper ex, in tempus libero. Ut tempus sodales diam, sed lobortis turpis pulvinar ac. Sed eu erat posuere, rhoncus tortor sed, consequat odio. Pellentesque egestas elit a feugiat porta. Nam ut elit nec nunc dignissim scelerisque. Donec at auctor elit, non molestie sapien. Donec pulvinar nisl velit, et vulputate arcu dictum eu. Morbi nec vehicula ligula. Maecenas eu odio turpis.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ render(controller('AppBundle:Offerings:investPopup')) }}
+{% endblock %}
+
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/app/js/jquery.easypiechart.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/invest_popup.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".easy-pie-chart").easyPieChart({
+                barColor: '#bac3d2',
+                borderColor: '#bac3d2',
+                trackColor: '#e8ecf1',
+                scaleColor: false,
+                lineCap: 'butt',
+                lineWidth: 15,
+                size: 120,
+                animate: 1500
+            });
+        })
+    </script>
+{% endblock %}

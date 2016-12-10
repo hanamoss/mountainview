@@ -1,0 +1,45 @@
+{% set active = 'user' %}
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block title %}Terms and Conditions - Crowd Valley{% endblock %}
+
+{% block body %}
+
+    <div class="mg-page-title parallax">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Terms and Conditions</h2>
+                    <p>Please review and accept the platform’s terms and conditions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mg-page">
+        <div class="container">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Factorum difficile adversantur, vexetur legatis virtus ponendam. Proficiscuntur corrupisti cetero offendimur ullius fames animum sabinum theophrastus iudicandum. Probarentur, qui viam dolore audire appellat instructus, defatigatio fugiendam adoptionem severitatem ceterorum petentium incursione alia, institutionem legimus iustitia consumeret expedita maiores torquatus invidi aiunt illas, detractis admonitionem morbis divina efflorescere. Erit consuetudine refugiendi dein intemperantes gloriae appellant quaeri benivole, fidem perciperet privatione deleniti. Patriam. Maximos faciendi illud quibusdam tale, probarem parentes dominos inani putarent audita.</p>
+            {#<div>
+                <a class="btn btn-main" data-toggle="modal" data-target="#modalAcceptTerms">I Accept Terms</a>
+            </div>#}
+        </div>
+        <!-- Modal -->
+        {#<div class="modal fade" id="modalAcceptTerms" tabindex="-1" role="dialog" aria-labelledby="modalAcceptTerms">
+            <div class="modal-dialog " role="document" style="max-width: 450px">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Accept Terms</h4>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p>I have read and agree with the Terms and Conditions</p>
+                        <div>
+                            <button class="btn btn-dark-main">Yes</button>
+                            <button class="btn btn-dark-main">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>#}
+    </div>
+
+{% endblock %}

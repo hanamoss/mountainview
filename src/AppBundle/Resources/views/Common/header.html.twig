@@ -1,0 +1,89 @@
+<header class="header transp sticky"> <!-- available class for header: .sticky .center-content .transp -->
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ path('homepage') }}">
+                <img class="img-responsive" src="{{ asset('bundles/app/images/logo.png') }}" />
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    {% if active is not defined %}
+                        {% set active = '' %}
+                    {% endif %}
+                    <li  class="{% if active == 'home' %}active{% endif %}"><a href="{{ path('homepage') }}">Inicio</a></li>
+                    <li class="{% if active == 'about' %}active{% endif %}"><a href="{{ path('about') }}">Nosotros </a></li>
+                    <li class="{% if active == 'comofunciona' %}active{% endif %}"><a href="{{ path('comofunciona') }}">Cómo funciona</a></li>
+                    <li><a href="{{ path('companies-debt') }}">Propiedades</a></li>
+                    <li><a href="{{ path('comofunciona') }}">Inmobiliarias</a></li>
+                    
+                   <!-- apagar Mi Perfil, Offerings, Raise Capital <li class="dropdown {% if active == 'profile' %}active{% endif %}">
+                        <a href="{{ path('my_profile') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mi Perfil<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('my_profile') }}">Mi Perfil</a></li>
+                            <li><a href="{{ path('my_investments') }}">Mis Inversiones</a></li>
+                            <li><a href="{{ path('my_wallet') }}">Mi Cartera</a></li>
+                        </ul>
+                    </li> 
+                    
+                    <li class="dropdown {% if active == 'offerings' %}active{% endif %}">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ofertas <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">Bienes Raíces</a>
+                                <ul class="sub-menu list-unstyled">
+                                    <li><a href="{{ path('properties-debt') }}">Debt</a></li>
+                                    <li><a href="{{ path('properties-equity') }}">Equity</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Compañías Privadas</a>
+                                <ul class="sub-menu list-unstyled">
+                                    <li><a href="{{ path('companies-debt') }}">Debt</a></li>
+                                    <li><a href="{{ path('companies-equity') }}">Equity</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="{{ path('secondary_market') }}">Secondary Market</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown {% if active == 'raise_capital' %}active{% endif %}">
+                        <a href="#">Levantar Capital <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('raise_capital') }}">Iniciar Aplicación</a></li>
+                            <li><a href="{{ path('my_applications') }}">Mis Aplicaciones</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown {% if active == 'contact' %}active{% endif %}">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('terms') }}">Términos</a></li>
+                            <li><a href="{{ path('privacy') }}">Política de Privacidad</a></li>
+                            <li><a href="{{ path('contact') }}">Contacto</a></li>
+                        </ul>
+                    </li> --> 
+                    <li class="dropdown {% if active == 'user' %}active{% endif %}">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Registrarse <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                        	{% if authenticated %}
+	                            <li><a href="{{ path('logout') }}">Cerrar Sesión</a></li>                    	                        	
+                            	<li><a href="{{ path('email_verification') }}">Verificación de Correo Electrónico</a></li>
+                            	<li><a href="{{ path('complete_registration') }}">Completar Registro</a></li>
+                        	{% else %}
+	                            <li><a href="#modal-login" data-toggle="modal" data-target="#modal-login">Iniciar Sesión</a></li>                    	
+                            	<li><a href="{{ path('signup') }}">Registrate</a></li>
+                        	{% endif %}
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+</header>

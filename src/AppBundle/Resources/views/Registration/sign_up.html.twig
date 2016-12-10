@@ -1,0 +1,43 @@
+
+    <form role="form" id="form_sign_up" action="{{ path('sign_up') }}" method="POST">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Registrarse</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row form-group">
+                <div class="col-md-6">
+                    <input type="text" id="sign_up_type_given_name" name="sign_up_type[given_name]" class="form-control" placeholder="Nombre">
+                </div>
+                <div class="col-md-6">
+                    <input type="text" id="sign_up_type_family_name" name="sign_up_type[family_name]" class="form-control" placeholder="Apellido">
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="email" id="sign_up_type_email" name="sign_up_type[email]" required="required" class="form-control" placeholder="Email address">
+            </div>
+            <div class="form-group">
+                <input type="password" id="sign_up_type_password" name="sign_up_type[password]" required="required" class="form-control" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <input type="password" id="sign_up_type_confirmPassword" name="sign_up_type[confirmPassword]" class="form-control" placeholder="Confirm Password">
+            </div>
+            <div class="form-group">
+                <input type="text" id="sign_up_type_organization_name" name="sign_up_type[organization_name]" class="form-control" placeholder="Organization name">
+            </div>
+            <div class="form-group">
+                <input type="text" id="sign_up_type_position" name="sign_up_type[position]" class="form-control" placeholder="Position at company / organization">
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"  value="1" name="sign_up_type[confirm_terms]" id="ck_agree" required="required"> Acepta nuestros<a href="#">términos de uso</a> y <a href="#">política de privacidad.</a>
+                </label>
+            </div>
+        </div>
+        <div class="modal-footer text-left">
+            <p class="text-left">¿Ya tienesuna cuenta? <a href="#modal-login" data-toggle="modal" data-target="#modal-login" data-dismiss="modal">Log in here.</a></p>
+            <button type="submit" id="" name="" class="btn btn-primary btn-block btn-lg">Crear Cuenta</button>
+        </div>
+    </form>
+
+<!-- end:modal-signup -->

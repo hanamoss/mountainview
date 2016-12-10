@@ -1,0 +1,61 @@
+{% set active = 'profile' %}
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block title %}Edit Profile - Crowd Valley{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('bundles/app/css/s3.upload.css') }}" rel="stylesheet">{% endblock %}
+{% block body %}
+
+    <div class="mg-page-title parallax">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Edit Profile </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mg-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-sm-12 pull-right">
+                    <form name="" method="post" action="" id="" role="form">
+                        <div class="row mb20">
+                            <div class="col-sm-6">
+                                <div class="form-group mg-book-form-input">
+                                    <label for="givenName">Given Name</label>
+									{{ form_widget(form.givenName, {'attr': {'class': 'form-control', 'placeholder' : 'Enter your given name', 'id': 'givenName', 'value' : self.givenName}}) }}
+                                </div>
+                                <div class="form-group mg-book-form-input">
+                                    <label for="familyName">Family Name</label>
+									{{ form_widget(form.familyName, {'attr': {'class': 'form-control', 'placeholder' : 'Enter your family name', 'id': 'familyName', 'value' : self.familyName}}) }}
+                                </div>
+                                <div class="form-group mg-book-form-input">
+                                    <label for="phone1">Phone Number</label>
+									{{ form_widget(form.phone1, {'attr': {'class': 'form-control', 'placeholder' : 'Add your phone number', 'id': 'phone1', 'value' : self.phone1}}) }}
+                                </div>
+                            </div>
+                        </div>
+						{{ form_widget(form.submit, {'attr': {'class': 'btn btn-main'}, 'label': 'Save'} ) }}
+                    </form>
+                </div>
+                <div class="col-md-3 col-sm-12 pull-left">
+                    <div class="mg-widget-area">
+                        <aside class="mg-widget">
+                            <h2 class="mg-widget-title">MY ACCOUNT</h2>
+                            <ul>
+                                <li><a href="{{ path('my_profile') }}"><i class="fa fa-user"></i> Overview</a></li>
+                                <li class="active"><a href="{{ path('edit_profile') }}"><i class="fa fa-money"></i> Edit Profile</a></li>
+                                <li><a href="{{ path('change_password') }}"><i class="fa fa-key"></i> Change Password</a></li>
+                                <li><a href="{{ path('change_email') }}"><i class="fa fa-money"></i> Change Email</a></li>
+                            </ul>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

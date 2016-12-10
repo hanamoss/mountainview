@@ -1,0 +1,30 @@
+{
+  "name":         "crowdvalley/auth-bundle",
+  "type":         "symfony-bundle",
+  "description":  "CrowdValley client authentication stack in a Symfony project",
+  "keywords":     ["authentication", "client"],
+  "homepage":     "http://crowdvalley.com",
+  "license":      "MIT",
+  "authors":      [
+    {
+      "name":     "Crowd Valley",
+      "email":    "info@crowdvalley.com"
+    },
+    {
+      "name":     "The contributors",
+      "homepage": "https://github.com/crowdvalley/CrowdValleyAuthBundle/contributors"
+    }
+  ],
+  "require":      {
+    "symfony/framework-bundle": "2.*",
+    "misd/guzzle-bundle": "~1.1"
+  },
+  "require-dev": {
+    "symfony/yaml": "2.*",
+    "symfony/console": "2.*",
+    "phpunit/phpunit": "3.7.*"
+  },
+  "autoload": {
+    "psr-4": { "CrowdValley\\Bundle\\AuthBundle\\": "" }
+  }
+}

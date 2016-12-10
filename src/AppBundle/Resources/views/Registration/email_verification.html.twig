@@ -1,0 +1,49 @@
+{% set active = 'user' %}
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block title %}Verificación de Email - Invierte PTY{% endblock %}
+
+{% block body %}
+    <div class="mg-page-title parallax">
+        <div class="mg-page">
+            <div class="container">
+                <div class="row">
+                    <div class="mg-404-error-txt">
+                        <div class="col-md-3">
+                            <div class="mg-404-badg pull-left">
+                                <i class="fa fa-envelope" style="font-size: 90px"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                        	<div class="row">
+								<div class="mg-404-txt-search">
+									<strong>Gracias por unirte a la red de Invierte PTY. La plataforma en línea, los usuarios automaticamente reciben una activación por email, la cual contiene un enlace en el que debeberán hacer click para verificar su correo electrónico.</strong>
+									<p>En este demo, puedes continuar a las siguientes páginas sin verificar tu correo electrónico.</p>
+									<div>
+										{% if resent_email %}
+											<div class="col-md-6">		
+												<div class="alert alert-success">
+													<p>Tu email ha sido re-enviado</p>
+												</div>
+											</div>
+										{% else %}
+											<div class="col-md-6">
+												<a href="{{ path('resend_verification_email') }}" class="btn btn-main-clean btn-block"> Re-enviar Email de Verificación</a>
+											</div>
+										{% endif %}
+									</div>
+									<div class="mg-404-search-form">
+										<div class="col-md-6">
+											<a href="{{ path('complete_registration') }}" class="btn btn-main"> Continuar Proceso de Registro</a>
+										</div>
+									</div>									
+								</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

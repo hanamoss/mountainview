@@ -1,0 +1,59 @@
+<form role="form" id="form_sign_in" action="{{ path('sign_in') }}" method="POST">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h4 class="modal-title">Login</h4> </div>
+	<div class="modal-body">
+		<p style="color:red" id="pError"></p>     
+		<div class="form-group">
+			{{ form_widget(form.email, {'attr': {'class': 'form-control','placeholder':'Email address', 'id': 'emailAddress', 'value' : ''}}) }}
+		</div>
+		<div class="form-group">
+			{{ form_widget(form.password, {'attr': {'class': 'form-control','placeholder':'Password', 'id': 'password', 'value' : ''}}) }}
+		</div>
+		<div style="visibility: hidden">
+			{{ form_widget(form.redirect, {'attr': {'class': 'form-control','value': signin_redirect|default('homepage') }}) }}
+		</div>	
+	</div>
+	<div class="modal-footer  text-left">
+		<p class="text-left">Don't have an account?  <a href="{{ path('signup') }}">Sign up here.</a></p>
+		<p class="text-left"><a href="{{ path('forgot_pwd') }}" >Forgot password?</a></p>
+		{{ form_widget(form.submit, {'attr': {'class': 'btn btn-dark-main btn-block btn-lg'}, 'label': 'Log In'} ) }}
+	</div>
+</form>            
+
+{#
+<script>
+    $(document).ready(function () {
+        $('#form_sign_in').on('submit', function (e) {
+            $('#pError').hide();
+            var $form = $(this);
+            e.stopPropagation();
+            $.ajax({
+                type: "POST",
+                url: $form.attr('action'),
+                data: $form.serialize(), // serializes the form's elements.
+                success: function (data)
+                {
+                    var obj = JSON.parse(data);
+                    //$('#modal-signup .modal-content').html(data);
+                    if (!obj['success']) {
+                        $('#pError').html(obj['error']);
+                        $('#pError').show();
+                        return false;
+                    } else {
+                        __insp.push(['identify', $('#sign_in_type_email').val()]);
+                        // Redirect
+                        window.location.href = obj['url'];
+                    }
+                }
+            });
+
+            return false;
+        });
+
+        $('.lk-signup').click(function () {
+            $('#modal-login').modal('hide');
+        });
+    });
+</script>
+#}
