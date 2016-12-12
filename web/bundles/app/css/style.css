@@ -957,7 +957,7 @@ ul.styled-list.list-star li:before {
 .mg-page-sanfranciscomall {
   padding-top: 25vh;
   padding-bottom: 34vh;
-  background-image: url(/bundles/app/images/proyectos/san-francisco-mall-panama-proyecto.PNG);
+  background-image: url(/bundles/app/images/proyectos/san-francisco-mall-panama-proyecto.png);
   color: #fff;
   text-align: center;
   background-size: cover;
@@ -4618,7 +4618,10 @@ div.cs-skin-elastic .cs-options .cs-selected span::after {
   height: 100%;
 }
 .carousel-inner>.item.active{
-  background: #ddd;
+  background: #232323;
+  border: 3px solid #deebf1;
+  padding:7px;
+  border-radius:3px;
 }
 .carousel-inner>.item>img, .carousel-inner>.item>a>img{
   margin: 0 auto;
@@ -4798,3 +4801,16 @@ input.error{
     margin-top: 7px;
 }
 
+.confidential-access {
+    box-shadow: 2px 1px 11px #cccccc;
+    padding: 2vh;
+    background: #fff;
+    border-radius: 2px;
+}
+
+.project-confidential {
+    background: #f3f3f3;
+    padding: 3vh;
+    border: 1px solid #e4e4e4;
+    border-radius: 2px;
+}
