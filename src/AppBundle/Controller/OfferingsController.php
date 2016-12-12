@@ -120,6 +120,38 @@ class OfferingsController extends Controller
     }
 
     /**
+     * @Route("bacata", name="bacata")
+     */
+    public function propertyBacata()
+    {
+        $offeringArray = array(); $offeringList = array();
+        if ($this->get('session')->get('authenticated') == true) {
+            $cvResponse = $this->get('offering')->getOfferings();
+            if ($cvResponse->outcome == CVResponse::RESPONSE_OUTCOME_SUCCESS) {
+                !empty($cvResponse->objectList) ? $this->objToArray($cvResponse->objectList, $offeringArray) : array();
+                foreach ($offeringArray as $k => $offering) {
+                    if ($offering['additionalType'] == 'loan') {
+                        $organization = $this->get('organization')->getOrganizationWithId($offering['organization']);
+                        if ($organization->outcome == CVResponse::RESPONSE_OUTCOME_SUCCESS) {
+                            if (!empty($organization->object)) {
+                                $this->objToArray($organization->object, $orgArray);
+                                if ($orgArray['additionalType'] == 'real_estate') {
+                                    $offeringList[$k] = $offering;
+                                    $offeringList[$k]['organization'] = $orgArray;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        $this->params['type']= 'debt';
+        $this->params['offerings']= $offeringList;
+        //$this->params['menu_item']= 'debt';
+        return $this->render('AppBundle:Offerings:bacata.html.twig',$this->params);
+    }
+
+    /**
      * @Route("western-logistic-center", name="western-logistic-center")
      */
     public function propertyWesternLogistic()

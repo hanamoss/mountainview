@@ -944,6 +944,26 @@ ul.styled-list.list-star li:before {
   margin-top: 0;
   font-size: 45px;
 }
+.mg-page-bacata {
+  padding-top: 25vh;
+  padding-bottom: 34vh;
+  background-image: url(/bundles/app/images/proyectos/bacata/bacata1.png);
+  color: #fff;
+  text-align: center;
+  background-size: cover;
+}
+.mg-page-bacata .mg-page{
+  background-color: transparent;
+}
+.mg-page-bacata h2 {
+  font-family: 'Muli', sans-serif;
+  color: #fff;
+  text-transform: uppercase;
+  position: relative;
+  margin-bottom: 35px;
+  margin-top: 0;
+  font-size: 45px;
+}
 .mg-page-sanfranciscomall h2:after {
   content: '';
   width: 110px;
@@ -4812,5 +4832,12 @@ input.error{
     background: #f3f3f3;
     padding: 3vh;
     border: 1px solid #e4e4e4;
+    border-radius: 2px;
+}
+
+.projectdata {
+    background: #f3f3f3;
+    padding: 4vh;
+    border: 1px solid #eaeaea;
     border-radius: 2px;
 }
