@@ -1,7 +1,7 @@
 {% set active = 'profile' %}
 {% extends 'AppBundle::base.html.twig' %}
 
-{% block title %}My Investments - Crowd Valley{% endblock %}
+{% block title %} Dashboard - Invierte PTY{% endblock %}
 
 {% block body %}
 
@@ -9,15 +9,138 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>My Investments</h2>
-                    <p>Cogitavisse erant puerilis utrum efficiantur adhuc expeteretur.</p>
+                    <h2>Hola Roberto</h2>
                 </div>
             </div>
         </div>
     </div>
     <div class="mg-page">
         <div class="container">
+          <!-- profile data resume section ENDS -->
             <section>
+            <div class="row">
+            <div class="profile col-md-4">
+                <div class="col-md-12"><p class="pull-right profile-edit"><i class="glyphicon glyphicon-pencil"></i> Editar perfil</p> </div>
+                <div class="col-md-7"><img src="{{ asset('bundles/app/images/users/usr-roberto.png') }}" class="img-responsive" /> </div>
+                <div class="col-md-5"><h2>Hola Roberto</h2></div>
+                </div>
+                
+                <div class="profile-data col-md-2 text-center">
+                <h4>US $0</h4>
+                    <p>INVERSIÓN TOTAL</p>
+                </div>
+                <div class="profile-data col-md-2 text-center">
+                <h4>0</h4>
+                    <p>RETORNOS TOTALES A LA FECHA</p>
+                </div>
+                <div class="profile-data col-md-2 text-center">
+                <h4>0</h4>
+                    <p>NÚMERO DE INVERSIONES</p>
+                </div>
+                <div class="profile-data col-md-2 text-center">
+                <h4>1</h4>
+                    <p>MENSAJES</p>
+                </div>
+                </div>
+                
+            </section>
+            <!-- profile data resume section ENDS -->
+            
+            <section>
+            <hr>
+                <div class="row data-table">
+                <div class="mb30">
+                        <h2 class="mg-sec-left-title">Proyectos invertidos
+                    </h2>
+                        <table class="table" id="statement">
+                            <thead>
+                                <tr>
+                                    <th>Proyecto</th>
+                                    <th>Inmobiliaria</th>
+                                    <th>Financiamiento</th>
+                                    <th>Inversión</th>
+                                    <th>Rendimiento Esperado</th>
+                                    <th>Retorno a la Fecha</th>
+                                    <th>Estado</th>
+                                    <th>Mensajes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Vista Mar Golf Village</td>
+                                    <td>
+                                       Verde Azul
+                                    </td>
+                                    <td>$50,000</td>
+                                    <td>TIR 12% - 16% Anual</td>
+                                    <td>Max. 3 años</td>
+                                    <td>$1,500</td>
+                                    <td>Abierto</td>
+                                    <td>0 Mensajes</td>
+                                </tr>
+                                <tr>
+                                   <td>San Francisco Mall</td>
+                                    <td>
+                                       Abanella
+                                    </td>
+                                    <td>$30,000</td>
+                                    <td>TIR 14% - 16% Anual</td>
+                                    <td>Max. 3 años</td>
+                                    <td>$1,250</td>
+                                    <td>Completo/Cerrado</td>
+                                    <td>3 Mensajes</td>
+                                </tr>
+                                <tr>
+                                    <td>Mountain View</td>
+                                    <td>
+                                       Bern
+                                    </td>
+                                    <td>$1,000,000</td>
+                                    <td>TIR 12% - 16% Anual</td>
+                                    <td>Max. 3 años</td>
+                                    <td>$150,100</td>
+                                    <td>Abierto</td>
+                                    <td>0 Mensajes</td>
+                                </tr>                                    
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th></th>
+                                    <th class="text-right">Total</th>
+                                    <th>$ 1,180,0000</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                
+                </div>
+                
+                
+                
+                
+                
+            
+            </section>
+            
+            
+            
+            
+            
+            </div>
+        </div><!-- CONTAINER ENDS -->
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          <!-- SECTIONS: PORTFOLIO, FILTERS,   <section>
                 <div class="mg-sec-title">
                     <h2>Portfolio Analysis</h2>
                 </div>
@@ -206,7 +329,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> -->
 {% endblock %}
 {% block javascripts %}
     <script type="text/javascript" src="{{ asset('bundles/app/js/canvasjs.js') }}"></script>
