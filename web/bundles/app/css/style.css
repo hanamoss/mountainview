@@ -923,6 +923,35 @@ ul.styled-list.list-star li:before {
   left: 50%;
   margin-left: -55px;
 }
+.mg-page-vistamar {
+  padding-top: 25vh;
+  padding-bottom: 34vh;
+  background-image: url(/bundles/app/images/proyectos/vista-mar-village/vistamar1.png);
+  text-align: center;
+  background-size: cover;
+}
+.mg-page-vistamar .mg-page{
+  background-color: transparent;
+}
+.mg-page-vistamar h2 {
+  font-family: 'Montserrat', sans-serif;
+  color: #fff;
+  text-transform: uppercase;
+  position: relative;
+  margin-bottom: 35px;
+  margin-top: 0;
+  font-size: 45px;
+}
+.mg-page-vistamar h2:after {
+  content: '';
+  width: 110px;
+  height: 3px;
+  background-color: #e7b315;
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  margin-left: -55px;
+}
 
 .mg-page-westernlogistic {
   padding-top: 25vh;
