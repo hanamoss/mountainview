@@ -2580,6 +2580,8 @@ div.cs-skin-elastic .cs-options .cs-selected span::after {
   background-color: #233566;
   padding: 30px;
   margin-bottom: 30px;
+  border: 1px solid #162346;
+  border-radius: 3px;
   color: #c0c8cb;
 }
 .mg-widget .mg-widget-title {
@@ -4524,9 +4526,13 @@ div.cs-skin-elastic .cs-options .cs-selected span::after {
 }
 .wallet-total {
   position: relative;
-  color: #fff;
-  background-color: #1d2c56;
+  border: 2px solid #162346;
+  border-radius: 3px;
+  color: #ffffff;
+  background-color: #233566;
   padding: 30px 25px 20px;
+1px
+  solid #162346: b;
 }
 .btn-modal-withdraw{
   /*position: absolute;
@@ -4840,9 +4846,7 @@ input.error{
     min-height: 52vh;
     box-shadow: 4px 8px 19px rgba(202, 211, 218, 0.26);
 }
-.pp-estrategia-proyecto {
-  padding: 3vh
-}
+
 
 .project-data {
     background: #f7f7f7;
