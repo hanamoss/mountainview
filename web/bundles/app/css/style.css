@@ -1908,7 +1908,7 @@ div.cs-skin-elastic .cs-options .cs-selected span::after {
           transform: translate(0, 0);
 }
 .mg-about {
-  padding: 70px 0;
+  padding: 20vh 0;
   background-color: #f5f5f5;
   /* background-image: url(../images/about-bg.png); */
   background-position: center center;
@@ -2706,7 +2706,7 @@ div.cs-skin-elastic .cs-options .cs-selected span::after {
   right: 0;
 }
 .mg-about-features {
-  padding: 70px 0 70px;
+  padding: 20vh 0 70px;
 }
 .mg-tab-top-nav,
 .mg-tab-bottom-nav,
@@ -4813,17 +4813,17 @@ input.error{
 }
 
 .mg-comparsion-features {
-    background: #e2e7f3;
-    padding-top: 3vh;
-    padding-bottom: 3vh;
-    border-top: 1px solid #d7dce8;
+    background: #233566;
+    padding: 20vh 0;
+    border-top: 3px solid #111f46;
+    color: #fff!important;
 }
 
 .mg-success-features {
   background: #f0f4fd;
-  padding-top: 3vh;
-  padding-bottom: 3vh;
+  padding 20vh 0: 3vh;
   border-top: 1px solid #d7dce8;
+  padding: 20vh 0;
 }
 
 .p-top-success {
@@ -4889,4 +4889,16 @@ input.error{
   border-radius: 3px;
   background: #f8fbfd;
   margin-bottom: 7px;
+}
+.margintop-exito {
+  margin-top: -3vh;
+}
+
+.invierte-quote   {
+   background: #233566;
+   color: #fff!important
+
+}
+.invierte-quote-header {
+  color: #fff!important
 }
