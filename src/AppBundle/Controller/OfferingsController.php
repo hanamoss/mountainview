@@ -86,6 +86,37 @@ class OfferingsController extends Controller
         //$this->params['menu_item']= 'debt';
         return $this->render('AppBundle:Offerings:residencial-santa-maria-panama.html.twig',$this->params);
     }
+    /**
+     * @Route("villas-rio-corona", name="villas-rio-corona")
+     */
+    public function propertyRioCorona()
+    {
+        $offeringArray = array(); $offeringList = array();
+        if ($this->get('session')->get('authenticated') == true) {
+            $cvResponse = $this->get('offering')->getOfferings();
+            if ($cvResponse->outcome == CVResponse::RESPONSE_OUTCOME_SUCCESS) {
+                !empty($cvResponse->objectList) ? $this->objToArray($cvResponse->objectList, $offeringArray) : array();
+                foreach ($offeringArray as $k => $offering) {
+                    if ($offering['additionalType'] == 'loan') {
+                        $organization = $this->get('organization')->getOrganizationWithId($offering['organization']);
+                        if ($organization->outcome == CVResponse::RESPONSE_OUTCOME_SUCCESS) {
+                            if (!empty($organization->object)) {
+                                $this->objToArray($organization->object, $orgArray);
+                                if ($orgArray['additionalType'] == 'real_estate') {
+                                    $offeringList[$k] = $offering;
+                                    $offeringList[$k]['organization'] = $orgArray;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        $this->params['type']= 'debt';
+        $this->params['offerings']= $offeringList;
+        //$this->params['menu_item']= 'debt';
+        return $this->render('AppBundle:Offerings:villas-rio-corona.html.twig',$this->params);
+    }
 
      /**
      * @Route("san-francisco-mall", name="san-francisco-mall")

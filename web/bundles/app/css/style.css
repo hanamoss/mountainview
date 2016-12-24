@@ -893,6 +893,35 @@ ul.styled-list.list-star li:before {
   left: 50%;
   margin-left: -55px;
 }
+.mg-page-riocorona {
+  padding-top: 25vh;
+  padding-bottom: 34vh;
+  background-image: url(/bundles/app/images/proyectos/villas-rio-corona/riocorona8.jpg);
+  text-align: center;
+  background-size: cover;
+}
+.mg-page-riocorona .mg-page{
+  background-color: transparent;
+}
+.mg-page-riocorona h2 {
+  font-family: 'Droid Sans', sans-serif;
+  color: #fff;
+  text-transform: uppercase;
+  position: relative;
+  margin-bottom: 35px;
+  margin-top: 0;
+  font-size: 45px;
+}
+.mg-page-riocorona h2:after {
+  content: '';
+  width: 110px;
+  height: 3px;
+  background-color: #e7b315;
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  margin-left: -55px;
+}
 .mg-page-santamariagolf {
   padding-top: 25vh;
   padding-bottom: 34vh;
